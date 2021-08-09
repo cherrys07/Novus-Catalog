@@ -1,0 +1,2 @@
+# Novus Catalog
+A student record database for the newly created Bolivian microfinance club that is associated with Universidad para el Desarrollo y la Innovación and Winthrop University. The system will consist of a web interface for users to login and enter information, and a backend to store the information in a database. The main aim of this project is to help the University keep a record of high school students who wish to become members of its microfinance club.
