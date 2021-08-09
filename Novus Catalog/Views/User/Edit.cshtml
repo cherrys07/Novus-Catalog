@@ -1,0 +1,81 @@
+﻿@using Novus_Catalog.Models
+@model USER
+
+@{
+    Layout = "~/Views/Shared/_header.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    
+    <link href="~/css/style.css" rel="stylesheet" media="screen" />
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <div class="row subHeading">
+        <div class="span12"><h4>Edit Passwords</h4></div>
+    </div>
+
+    @using (Html.BeginForm("User", "User", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row">
+            <div class="span3">Existing Administrator Password: </div>
+            <div class="span6">
+                <div id="oldAdminPwd-group" class="control-group">
+                    <div class="controls">
+                        <input type="password" class="span3" id="oldAdminPwd" name="oldAdminPwd" maxlength="15" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span3">New Administrator Password: </div>
+            <div class="span6">
+                <div id="newAdminPwd-group" class="control-group">
+                    <div class="controls">
+                        <input type="password" class="span3" id="newAdminPwd" name="newAdminPwd" maxlength="15" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span3">Existing Mentor Password: </div>
+            <div class="span6">
+                <div id="oldMentorPwd-group" class="control-group">
+                    <div class="controls">
+                        <input type="password" class="span3" id="oldMentorPwd" name="oldMentorPwd" maxlength="15" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span3">New Mentor Password: </div>
+            <div class="span6">
+                <div id="newMentorPwd-group" class="control-group">
+                    <div class="controls">
+                        <input type="password" class="span3" id="newMentorPwd" name="newMentorPwd" maxlength="15" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="buttons" class="row">
+            <div class="span12">
+                <button class="btn" type="submit" value="Save" formaction="Edit">
+                    Submit
+                </button>
+                <button class="btn" type="submit" value="Cancel">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    }
+</body>
+</html>
+

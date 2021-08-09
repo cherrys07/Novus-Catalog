@@ -1,0 +1,159 @@
+﻿@model Novus_Catalog.Models.STUDENT
+
+@{
+       Layout = "~/Views/Shared/_header.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.date-picker').datepicker();
+        })
+    </script>
+</head>
+<body>
+    <div class="row subHeading">
+        <div class="span12"><h4 class="">Edit Student</h4></div>
+    </div>
+
+    @using (Html.BeginForm("User", "Student", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.SID);
+
+        <div class="row">
+            <div class="span2">First Name: *</div>
+            <div class="span6">
+                <div id="fName-group" class="control-group">
+                    <div class="controls">
+                        @Html.EditorFor(model => model.SFIRSTNAME)
+                        @Html.ValidationMessageFor(model => model.SFIRSTNAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Last Name: *</div>
+            <div class="span6">
+                <div id="lName-group" class="control-group">
+                    <div class="controls">
+                        @Html.EditorFor(model => model.SLASTNAME)
+                        @Html.ValidationMessageFor(model => model.SLASTNAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Street Address: </div>
+            <div class="span5">
+                @Html.EditorFor(model => model.ADDRESS)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">City: </div>
+            <div class="span3">
+                @Html.TextBoxFor(model => model.CITY)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Department: </div>
+            <div class="span2">
+                @Html.DropDownListFor(model => model.DEPARTMENT, new List<SelectListItem>
+                { new SelectListItem { Text="Beni", Value="BNI" },
+                  new SelectListItem { Text="Chuquisaca", Value="CHQ" },
+                  new SelectListItem { Text="Cochabamba", Value="CBB" },
+                  new SelectListItem { Text="La Paz", Value="LPZ" },
+                  new SelectListItem { Text="Oruro", Value="ORU" },
+                  new SelectListItem { Text="Pando", Value="PND" },
+                  new SelectListItem { Text="Potosí", Value="PSI" },
+                  new SelectListItem { Text="Santa Cruz", Value="SCZ" },
+                  new SelectListItem { Text="Tarija", Value="TJA" }}, "--Please select--",
+                 new { @class = "input-block-level" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Gender: *</div>
+            <div class="span2">
+                @Html.DropDownListFor(model => model.GENDER, new List<SelectListItem>
+                { new SelectListItem { Text="Male", Value="Male" },
+                  new SelectListItem { Text="Female", Value="Female" }}, "--Please select--",
+                        new { @class = "input-block-level" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">School: </div>
+            <div class="span5">
+                @Html.EditorFor(model => model.SCHOOL)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Parent's First Name: </div>
+            <div class="span3">
+                @Html.EditorFor(model => model.PFIRSTNAME)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Parent's Last Name: </div>
+            <div class="span3">
+                @Html.EditorFor(model => model.PLASTNAME)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Phone Number: </div>
+            <div class="span3">
+                @Html.EditorFor(model => model.PHONE_NUMBER)
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Date Enrolled: *</div>
+            <div class="span6">
+                <div id="date-group" class="control-group">
+                    <div class="controls">
+                        @Html.TextBoxFor(model => model.DATE_ENROLLED, "", new { @class = "date-picker" })
+                        @Html.ValidationMessageFor(model => model.DATE_ENROLLED, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span2">Attendance: *</div>
+            <div class="span2">
+                @Html.DropDownListFor(model => model.ATTENDANCE, new List<SelectListItem>
+                { new SelectListItem { Text="Never", Value="Never" },
+                  new SelectListItem { Text="Rare", Value="Rare" },
+                  new SelectListItem { Text="Occasional", Value="Occasional" },
+                  new SelectListItem { Text="Frequent", Value="Frequent" }}, "--Please select--",
+                         new { @class = "input-block-level" })
+            </div>
+        </div>
+
+        <div id="buttons" class="row">
+            <div class="span12">
+                <button class="btn" type="submit" value="Save" formaction="Edit">
+                    Submit
+                </button>
+                <button class="btn" type="submit" value="Cancel">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    }
+</body>
+</html>
+
